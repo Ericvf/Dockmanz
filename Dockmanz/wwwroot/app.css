@@ -15,6 +15,12 @@ body {
     gap: 24px;
     padding: 30px;
     justify-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 30px;
+    justify-content: center; /* Changed from flex-start to center */
+    align-items: stretch; /* Ensures cards stretch to fill container height */
 }
 
 /* Container Cards */
@@ -29,7 +35,23 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    flex: 1 1 260px; /* Allow cards to grow and shrink, min width 260px */
+    min-width: 260px;
+    max-width: 400px; /* Optional: prevents cards from getting too wide */
+    box-sizing: border-box; /* Ensures padding/border are included in width */
+    height: 100%; /* Stretch to fill row height */
 }
+
+
+.container-overview {
+
+}
+
+/* Make cards grow to fill available space */
+.container-card {
+
+}
+
 
     .container-card:hover {
         transform: translateY(-4px);
