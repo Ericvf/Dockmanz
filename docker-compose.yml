@@ -1,0 +1,13 @@
+services:
+  dockmanz:
+    build: . 
+    # image: localhost:5000/telegrambots:latest
+    container_name: Dockmanz
+    restart: unless-stopped
+    networks:
+      - virtual-network
+
+networks:
+  virtual-network:
+    external: true
+    name: virtual-network

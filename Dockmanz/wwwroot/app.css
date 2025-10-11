@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #f2f4f8, #e8ebf0);
+    color: #1f2329;
+    margin: 0;
+    padding: 0;
+}
+
+/* Layout */
+.container-overview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 30px;
+    justify-content: flex-start;
+}
+
+/* Container Cards */
+.container-card {
+    background: linear-gradient(145deg, #ffffff, #f3f4f6);
+    border: 1px solid #dce0e5;
+    border-radius: 14px;
+    padding: 18px 20px;
+    width: 260px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05), 0 8px 20px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+    .container-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+/* Header */
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+    .container-header h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #111827;
+        margin: 0;
+    }
+
+/* Status Badge */
+.status {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.03em;
+}
+
+    .status.running {
+        background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+        color: #065f46;
+        border: 1px solid #6ee7b7;
+    }
+
+    .status.exited, .status.stopped {
+        background: linear-gradient(135deg, #fee2e2, #fecaca);
+        color: #7f1d1d;
+        border: 1px solid #fca5a5;
+    }
+
+/* Image label */
+.image-name {
+    font-size: 0.85rem;
+    color: #4b5563;
+    margin: 8px 0 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Buttons */
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+button {
+    flex: 1;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+    button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+/* Start Button */
+.start-btn {
+    background: linear-gradient(135deg, #34d399, #059669);
+    color: white;
+    box-shadow: 0 2px 4px rgba(5,150,105,0.2);
+}
+
+    .start-btn:hover:not(:disabled) {
+        background: linear-gradient(135deg, #059669, #047857);
+        transform: translateY(-1px);
+    }
+
+/* Stop Button */
+.stop-btn {
+    background: linear-gradient(135deg, #f87171, #dc2626);
+    color: white;
+    box-shadow: 0 2px 4px rgba(220,38,38,0.2);
+}
+
+    .stop-btn:hover:not(:disabled) {
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
+        transform: translateY(-1px);
+    }
+
+/* Titles */
+.page-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 40px 40px 10px;
+}
+
+/* Subtle hover feel */
+.container-card:hover .status.running {
+    border-color: #34d399;
+}
+
+.container-card:hover .status.exited {
+    border-color: #f87171;
+}
+
+
+h1 {
+    font-size: 4rem;
+    margin: 0;
+    padding: 0;
+    padding-left: 30px;
+    position: relative;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4),
+                0 6px 12px rgba(0, 0, 0, 0.3),
+                0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+    h1:before {
+        content: "";
+        display: block;
+        position: absolute;
+        -webkit-filter: blur(20px);
+        filter: blur(20px);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        mix-blend-mode: screen;
+        background-image: repeating-linear-gradient( -45deg, transparent, transparent 1em, #34d399 1em, #059669 50% ), repeating-linear-gradient( 45deg, #dc2626, #dc2626 1em, #f87171 1em, #b91c1c 50% );
+        background-size: 3em 3em, 2em 2em;
+        animation-name: ani;
+        animation-duration: 16s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+
+@keyframes ani {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 400% 0;
+    }
+}

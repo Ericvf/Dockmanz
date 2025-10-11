@@ -1,0 +1,46 @@
+﻿@page "/"
+@inject DockerService dockerService
+
+<PageTitle>Dockmanz - Docker container manager</PageTitle>
+
+<h1>Dockmanz</h1>
+<div class="container-overview">
+    @foreach (var container in containers)
+    {
+        <div class="container-card">
+            <div class="container-header">
+                <h3>@container.Name</h3>
+                <span class="status @container.Status.ToLower()" title="@container.Status">@container.Status</span>
+            </div>
+            <p class="image-name" title="@container.Image">@container.Image</p>
+            <div class="actions">
+                <button class="start-btn" @onclick="() => StartContainer(container.Id)" disabled="@IsRunning(container.Status)">Start</button>
+                <button class="stop-btn" @onclick="() => StopContainer(container.Id)" disabled="@IsStopped(container.Status)">Stop</button>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private IEnumerable<ContainerModel> containers = Enumerable.Empty<ContainerModel>();
+
+    protected async override Task OnInitializedAsync()
+    {
+        containers = await dockerService.GetContainers();
+    }
+
+    private bool IsRunning(string status) => status.StartsWith("Up", StringComparison.OrdinalIgnoreCase);
+    private bool IsStopped(string status) => !IsRunning(status);
+
+    private async Task StartContainer(string id)
+    {
+        await dockerService.StartContainer(id);
+        containers = await dockerService.GetContainers();
+    }
+
+    private async Task StopContainer(string id)
+    {
+        await dockerService.StopContainer(id);
+        containers = await dockerService.GetContainers();
+    }
+}
