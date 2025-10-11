@@ -13,4 +13,6 @@ Dockmanz is a lightweight web app for managing Docker containers with a simple, 
 1. Clone the repository.
 2. Build and run the app using Docker Compose
 
+## Screenshot
+
 ![Screenshot](screenshot.png)
