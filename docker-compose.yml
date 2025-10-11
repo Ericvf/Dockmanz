@@ -1,5 +1,6 @@
 services:
   dockmanz:
+    build: .
     image: localhost:5000/dockmanz:latest
     container_name: Dockmanz
     volumes:
