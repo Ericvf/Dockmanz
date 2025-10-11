@@ -1,6 +1,6 @@
 # Dockmanz
 
-Dockmanz is a lightweight web app for managing Docker containers with a simple, interactive interface.
+Dockmanz is a lightweight web app for managing Docker containers with a simple, interactive interface build using Blazor
 
 ## Features
 
@@ -16,3 +16,5 @@ Dockmanz is a lightweight web app for managing Docker containers with a simple, 
 ## Screenshot
 
 ![Screenshot](screenshot.png)
+
+
