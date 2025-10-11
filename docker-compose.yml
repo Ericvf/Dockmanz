@@ -1,8 +1,9 @@
 services:
   dockmanz:
-    build: . 
-    # image: localhost:5000/telegrambots:latest
+    image: localhost:5000/dockmanz:latest
     container_name: Dockmanz
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     restart: unless-stopped
     networks:
       - virtual-network
