@@ -19,8 +19,10 @@ body {
     flex-wrap: wrap;
     gap: 24px;
     padding: 30px;
-    justify-content: center; /* Changed from flex-start to center */
-    align-items: stretch; /* Ensures cards stretch to fill container height */
+    justify-content: center;
+    /* Changed from flex-start to center */
+    align-items: stretch;
+    /* Ensures cards stretch to fill container height */
 }
 
 /* Container Cards */
@@ -35,28 +37,28 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    flex: 1 1 260px; /* Allow cards to grow and shrink, min width 260px */
+    flex: 1 1 260px;
+    /* Allow cards to grow and shrink, min width 260px */
     min-width: 260px;
-    max-width: 400px; /* Optional: prevents cards from getting too wide */
-    box-sizing: border-box; /* Ensures padding/border are included in width */
-    height: 100%; /* Stretch to fill row height */
+    max-width: 400px;
+    /* Optional: prevents cards from getting too wide */
+    box-sizing: border-box;
+    /* Ensures padding/border are included in width */
+    height: 100%;
+    /* Stretch to fill row height */
 }
 
 
-.container-overview {
-
-}
+.container-overview {}
 
 /* Make cards grow to fill available space */
-.container-card {
+.container-card {}
 
+
+.container-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
-
-
-    .container-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    }
 
 /* Header */
 .container-header {
@@ -66,12 +68,12 @@ body {
     margin-bottom: 6px;
 }
 
-    .container-header h3 {
-        font-size: 1rem;
-        font-weight: 600;
-        color: #111827;
-        margin: 0;
-    }
+.container-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
 
 /* Status Badge */
 .status {
@@ -86,17 +88,18 @@ body {
     letter-spacing: 0.03em;
 }
 
-    .status.running {
-        background: linear-gradient(135deg, #d1fae5, #a7f3d0);
-        color: #065f46;
-        border: 1px solid #6ee7b7;
-    }
+.status.running {
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    color: #065f46;
+    border: 1px solid #6ee7b7;
+}
 
-    .status.exited, .status.stopped {
-        background: linear-gradient(135deg, #fee2e2, #fecaca);
-        color: #7f1d1d;
-        border: 1px solid #fca5a5;
-    }
+.status.exited,
+.status.stopped {
+    background: linear-gradient(135deg, #fee2e2, #fecaca);
+    color: #7f1d1d;
+    border: 1px solid #fca5a5;
+}
 
 /* Image label */
 .image-name {
@@ -126,35 +129,35 @@ button {
     transition: background 0.2s ease, transform 0.1s ease;
 }
 
-    button:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-        transform: none;
-    }
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
 
 /* Start Button */
 .start-btn {
     background: linear-gradient(135deg, #34d399, #059669);
     color: white;
-    box-shadow: 0 2px 4px rgba(5,150,105,0.2);
+    box-shadow: 0 2px 4px rgba(5, 150, 105, 0.2);
 }
 
-    .start-btn:hover:not(:disabled) {
-        background: linear-gradient(135deg, #059669, #047857);
-        transform: translateY(-1px);
-    }
+.start-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: translateY(-1px);
+}
 
 /* Stop Button */
 .stop-btn {
     background: linear-gradient(135deg, #f87171, #dc2626);
     color: white;
-    box-shadow: 0 2px 4px rgba(220,38,38,0.2);
+    box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);
 }
 
-    .stop-btn:hover:not(:disabled) {
-        background: linear-gradient(135deg, #dc2626, #b91c1c);
-        transform: translateY(-1px);
-    }
+.stop-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    transform: translateY(-1px);
+}
 
 /* Titles */
 .page-title {
@@ -181,29 +184,29 @@ h1 {
     padding-left: 30px;
     position: relative;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4),
-                0 6px 12px rgba(0, 0, 0, 0.3),
-                0 12px 20px rgba(0, 0, 0, 0.2);
+        0 6px 12px rgba(0, 0, 0, 0.3),
+        0 12px 20px rgba(0, 0, 0, 0.2);
 }
 
-    h1:before {
-        content: "";
-        display: block;
-        position: absolute;
-        -webkit-filter: blur(20px);
-        filter: blur(20px);
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        mix-blend-mode: screen;
-        background-image: repeating-linear-gradient( -45deg, transparent, transparent 1em, #34d399 1em, #059669 50% ), repeating-linear-gradient( 45deg, #dc2626, #dc2626 1em, #f87171 1em, #b91c1c 50% );
-        background-size: 3em 3em, 2em 2em;
-        animation-name: ani;
-        animation-duration: 16s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-    }
+h1:before {
+    content: "";
+    display: block;
+    position: absolute;
+    -webkit-filter: blur(20px);
+    filter: blur(20px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: screen;
+    background-image: repeating-linear-gradient(-45deg, transparent, transparent 1em, #34d399 1em, #059669 50%), repeating-linear-gradient(45deg, #dc2626, #dc2626 1em, #f87171 1em, #b91c1c 50%);
+    background-size: 3em 3em, 2em 2em;
+    animation-name: ani;
+    animation-duration: 16s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
 
 @keyframes ani {
     from {
@@ -213,4 +216,8 @@ h1 {
     to {
         background-position: 40em 0;
     }
+}
+
+footer {
+    text-align: center;
 }
