@@ -123,17 +123,18 @@ button {
     padding: 8px 10px;
     border: none;
     border-radius: 8px;
-    font-weight: 600;
     font-size: 0.9rem;
     cursor: pointer;
     transition: background 0.2s ease, transform 0.1s ease;
 }
 
-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-}
+    button:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+        transform: none;
+        filter: grayscale(100%);
+        font-weight: 100;
+    }
 
 /* Start Button */
 .start-btn {
