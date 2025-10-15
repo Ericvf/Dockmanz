@@ -14,7 +14,8 @@ namespace Dockmanz.Services
                 Id = c.ID,
                 Name = c.Names.FirstOrDefault() ?? "None",
                 Image = c.Image,
-                Status = c.Status
+                Status = c.Status,
+                Url = c.Labels.TryGetValue("dmz.url", out var url) ? url : null,
             });
         }
 
@@ -40,8 +41,6 @@ namespace Dockmanz.Services
 #endif
             return new DockerClientConfiguration(dockerUri).CreateClient();
         }
-
-
     }
 
     public class ContainerModel
@@ -50,5 +49,6 @@ namespace Dockmanz.Services
         public required string Name { get; set; }
         public required string Image { get; set; }
         public required string Status { get; set; }
+        public string? Url { get; set; }
     }
 }

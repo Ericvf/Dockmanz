@@ -12,7 +12,15 @@
                 <h3>@container.Name</h3>
                 <span class="status @container.Status.ToLower()" title="@container.Status">@container.Status</span>
             </div>
-            <p class="image-name" title="@container.Image">@container.Image</p>
+            <p class="image-name" title="@container.Image">
+                @if (container.Url != null)
+                {
+                    <a href="@container.Url" target="_blank">@container.Url</a>
+                }
+                <div>@container.Image</div>
+            </p>
+            <p class="image-name" title="@container.Image">
+            </p>
             <div class="actions">
                 <button class="start-btn" @onclick="() => StartContainer(container.Id)" disabled="@IsRunning(container.Status)">Start</button>
                 <button class="stop-btn" @onclick="() => StopContainer(container.Id)" disabled="@IsStopped(container.Status)">Stop</button>
