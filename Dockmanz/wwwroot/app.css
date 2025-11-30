@@ -212,18 +212,21 @@ pre {
     backdrop-filter: blur(8.4px);
     -webkit-backdrop-filter: blur(8.4px);
     border: 1px solid rgba(0, 0, 0, 0.21);
-    padding: 2em;
-    margin: 5em;
+ 
     color: white;
     position: absolute;
-    top: 0;
+    top: 2.5vh;
+    left: 2.5vw;
+    width: 95vw;
 }
-
-    .console .content pre {
-        overflow-y: auto;
-        height: 70vh;
-        width: calc(100vw - 14em);
+    .console .content {
+        margin: 1em;
+        padding-top: 0em;
     }
+        .console .content pre {
+            overflow-y: auto;
+            height: 85vh;
+        }
 
     .console button {
         position:absolute;
