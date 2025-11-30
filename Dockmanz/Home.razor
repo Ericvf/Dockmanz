@@ -1,6 +1,6 @@
 ﻿@page "/"
 @inject DockerService dockerService
-
+@inject IJSRuntime js
 <PageTitle>Dockmanz - Container manager</PageTitle>
 
 <h1 class="linear-wipe">DockmanZ</h1>
@@ -24,15 +24,35 @@
             <div class="actions">
                 <button class="start-btn" @onclick="() => StartContainer(container.Id)" disabled="@IsRunning(container.Status)">Start</button>
                 <button class="stop-btn" @onclick="() => StopContainer(container.Id)" disabled="@IsStopped(container.Status)">Stop</button>
+                <button class="logs-btn" @onclick="() => ShowLogs(container)">logs</button>
             </div>
         </div>
     }
-
 </div>
-<footer>Appbyfex v1.0</footer>
 
+@if (isShowingLogs)
+{
+    <div class="console">
+        <div class="content" @ref="contentDiv">
+            <h1>@logName</h1>
+            <button @onclick="CloseLogs" class="stop-btn">X</button>
+            <pre @ref="preElement">
+                @logsContent
+            </pre>
+        </div>
+    </div>
+}
+
+<footer>Appbyfex v1.0</footer>
 @code {
+
+    private ElementReference contentDiv;
+
     private IEnumerable<ContainerModel> containers = Enumerable.Empty<ContainerModel>();
+    private bool isShowingLogs = false;
+    private string? logName = null;
+    private string? logsContent = null;
+    private ElementReference preElement;
 
     protected async override Task OnInitializedAsync()
     {
@@ -52,5 +72,35 @@
     {
         await dockerService.StopContainer(id);
         containers = await dockerService.GetContainers();
+    }
+
+    private CancellationTokenSource? logCts;
+
+    private async Task ShowLogs(ContainerModel container)
+    {
+        logName = container.Name;
+        logsContent = await dockerService.GetContainerLogs(container.Id);
+        logsContent = logsContent.Trim();
+        isShowingLogs  = true;
+
+        await InvokeAsync(StateHasChanged);
+
+        await js.InvokeVoidAsync("scrollToBottom", preElement);
+
+        logCts = new CancellationTokenSource();
+        _ = dockerService.StreamContainerLogsAsync(container.Id, async line =>
+        {
+            await js.InvokeVoidAsync("appendLogLine", preElement, line);
+
+        }, logCts.Token);
+    }
+
+    private void CloseLogs()
+    {
+        isShowingLogs  = false;
+
+        logCts?.Cancel();
+        logCts?.Dispose();
+        logCts = null;
     }
 }

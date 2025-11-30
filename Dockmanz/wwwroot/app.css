@@ -152,6 +152,12 @@ button {
     transform: translateY(-1px);
 }
 
+.logs-btn {
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    color: white;
+    box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);
+}
+
 /* Titles */
 .page-title {
     font-size: 1.8rem;
@@ -173,7 +179,7 @@ footer {
     text-align: center;
 }
 
-h1 {
+h1.linear-wipe {
     color: #fff;
     text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
     font-size: clamp(4em, 6vw + 1rem, 8em);
@@ -193,6 +199,53 @@ body {
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     height: 100vh;
+}
+
+pre {
+    font-family: 'Inter', sans-serif;
+}
+
+.console {
+    background: rgba(0, 0, 0, 0.64);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.4px);
+    -webkit-backdrop-filter: blur(8.4px);
+    border: 1px solid rgba(0, 0, 0, 0.21);
+    padding: 2em;
+    margin: 5em;
+    color: white;
+    position: absolute;
+    top: 0;
+}
+
+    .console .content pre {
+        overflow-y: auto;
+        height: 70vh;
+        width: calc(100vw - 14em);
+    }
+
+    .console button {
+        position:absolute;
+        top:2em;
+        right: 2em;
+    }
+    .console h1 {
+        margin: 0;
+    }
+
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3272a8;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
 }
 
 
