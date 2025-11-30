@@ -225,7 +225,7 @@ pre {
     }
         .console .content pre {
             overflow-y: auto;
-            height: 85vh;
+            height: 75vh;
         }
 
     .console button {
